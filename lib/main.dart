@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:list_tile_practise/utils/Utils.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,6 +17,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        textTheme: const TextTheme(
+          headline1: TextStyle(fontSize: 24,fontFamily: "FiraSans",fontStyle: FontStyle.italic,fontWeight: FontWeight.bold),
+          subtitle1: TextStyle(fontSize: 14,fontFamily: "FiraSans",fontStyle: FontStyle.italic,fontWeight: FontWeight.bold,color: Colors.purpleAccent),
+        ),
       ),
       home: const MyHomePage(title: 'List Tile Practise'),
     );
@@ -54,13 +59,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   backgroundImage: AssetImage ("assets/images/ic_black_icon.png"),
                   // radius: 50,
                 ),
-                title: Text(arrNames[index], style: const TextStyle(color: Colors.deepPurpleAccent),),
-                subtitle: const Text("Phone", style: TextStyle(color: Colors.purpleAccent),),
+                title: Text(arrNames[index], style: mTextSize21(),),
+                subtitle: Text("Phone", style: TextStyle(color: Colors.purpleAccent),),
                 trailing: const Icon(Icons.add, color: Colors.purpleAccent,shadows: [Shadow(color: Colors.black,)],),
               );
             }, separatorBuilder: (context, index){
               return const Divider(height: 10,thickness: 2, color: Colors.black12,);
             }, itemCount: arrNames.length),
+          ),
+
+          const Divider(
+              thickness: 5,
           ),
 
           Expanded(
@@ -83,12 +92,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         Text(arrNames[index].characters.first,style: const TextStyle(fontSize: 6.5),)
                       ],
-                    )
+                    ),
                   ),
                 ),
-                title: Text(arrNames[index], style: const TextStyle(color: Colors.deepPurpleAccent),),
-                subtitle: const Text("Phone Number", style: TextStyle(color: Colors.purpleAccent),),
-                trailing: const Icon(Icons.add, color: Colors.purpleAccent,shadows: [Shadow(color: Colors.black,)],),
+                title: Text(arrNames[index], style: Theme.of(context).textTheme.headline1!.copyWith(color: Colors.yellow),),
+                subtitle: Text("Number", style:Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.orange),),
+                trailing: Icon(Icons.add, color: Colors.purpleAccent,shadows: [Shadow(color: Colors.black,)],),
               );
             }, separatorBuilder: (context, index){
               return const Divider(height: 10,thickness: 2, color: Colors.black12,);
